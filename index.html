@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<!-- ── SEO & OG TAGS ── -->
+<title>Rack — El cine que mereces ver</title>
+<meta name="description" content="Tú pones el mood. Rack pone la película. La app de cine para los que de verdad aman el cine. Test de humor, Modo Maratón y comunidad cinéfila."/>
+<meta name="theme-color" content="#09090B"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://rack.io/"/>
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://rack.io/"/>
+<meta property="og:title" content="Rack — El cine que mereces ver"/>
+<meta property="og:description" content="Tú pones el mood. Rack pone la película. Test de humor en 30 segundos, Modo Maratón y comunidad cinéfila."/>
+<meta property="og:image" content="https://rack.io/og-image.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:site_name" content="Rack"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:url" content="https://rack.io/"/>
+<meta name="twitter:title" content="Rack — El cine que mereces ver"/>
+<meta name="twitter:description" content="Tú pones el mood. Rack pone la película."/>
+<meta name="twitter:image" content="https://rack.io/og-image.jpg"/>
+
+<!-- ── FAVICON SVG inline via data URI ── -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2309090B'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='18' fill='%23818CF8'%3Era%3C/text%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%2309090B'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='90' fill='%23818CF8'%3Era%3C/text%3E%3C/svg%3E"/>
+
+<!-- ── PLAUSIBLE ANALYTICS (sin cookies, GDPR-friendly) ── -->
+<script defer data-domain="rack.io" src="https://plausible.io/js/script.js"></script>
+
+<!-- ── FONTS ── -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#09090B;--s1:#0F0F12;--s2:#18181B;--s3:#1F1F24;--s4:#27272C;--s5:#3F3F46;
+  --b:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.10);--b3:rgba(255,255,255,0.18);
+  --t:#F4F4F5;--t2:#A1A1AA;--t3:#71717A;--t4:#52525B;
+  --acc:#6366F1;--acc2:#818CF8;--acc3:rgba(99,102,241,0.15);--acc4:rgba(99,102,241,0.08);
+  --grn:#22C55E;--ylw:#F59E0B;--prp:#A855F7;--blu:#3B82F6;--org:#F97316;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--t);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(9,9,11,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--b);}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:26px;letter-spacing:-0.02em;color:var(--t);text-decoration:none;}
+.nav-logo span{color:var(--acc2);}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-link{font-size:13px;color:var(--t3);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-link:hover{color:var(--t);}
+.nav-cta{background:var(--acc);color:#fff;border:none;padding:9px 20px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap;}
+.nav-cta:hover{background:var(--acc2);}
+
+/* ── HERO ── */
+.hero{min-height:100svh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;overflow:hidden;}
+.hero-backdrop{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,9,11,0.6) 0%,rgba(9,9,11,0.25) 35%,rgba(9,9,11,0.8) 75%,rgba(9,9,11,1) 100%),linear-gradient(to right,rgba(9,9,11,0.5),transparent 40%,transparent 60%,rgba(9,9,11,0.5));}
+.hero-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.012) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.012) 60px);pointer-events:none;}
+.hero-content{position:relative;z-index:2;}
+.hero-logo{font-family:'DM Serif Display',serif;font-size:clamp(80px,16vw,188px);letter-spacing:-0.03em;line-height:.9;margin-bottom:10px;}
+.hero-logo span{color:var(--acc2);}
+.hero-tagline{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(17px,2.5vw,26px);color:rgba(244,244,245,0.78);margin-bottom:14px;font-weight:400;}
+.hero-tagline strong{font-style:normal;color:var(--t);font-weight:400;}
+.hero-film-credit{font-size:11px;color:var(--t4);letter-spacing:.06em;margin-bottom:36px;}
+.hero-film-credit span{color:var(--t3);}
+.hero-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--acc);color:#fff;border:none;padding:14px 28px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-block;white-space:nowrap;}
+.btn-primary:hover{background:var(--acc2);transform:translateY(-1px);}
+.btn-secondary{background:rgba(255,255,255,0.07);color:var(--t2);border:1px solid var(--b2);padding:13px 24px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-block;backdrop-filter:blur(8px);white-space:nowrap;}
+.btn-secondary:hover{border-color:var(--b3);color:var(--t);}
+
+/* ── FILMS SCROLL ── */
+.films-scroll-section{padding:40px 0;background:var(--bg);border-bottom:1px solid var(--b);overflow:hidden;position:relative;}
+.films-scroll-section::before,.films-scroll-section::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
+.films-scroll-section::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.films-scroll-section::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+.films-track{display:flex;gap:10px;animation:scrollFilms 45s linear infinite;width:max-content;}
+.films-track:hover{animation-play-state:paused;}
+@keyframes scrollFilms{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.film-poster{width:90px;height:135px;border-radius:9px;object-fit:cover;flex-shrink:0;border:1px solid var(--b);transition:all .3s;filter:grayscale(15%);}
+.film-poster:hover{transform:scale(1.07) translateY(-4px);filter:grayscale(0%);box-shadow:0 14px 36px rgba(0,0,0,.6),0 0 0 1px rgba(99,102,241,0.3);}
+
+/* ── STATS ── */
+.stats-bar{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:24px 48px;display:flex;align-items:center;justify-content:center;gap:56px;}
+.stat-item{text-align:center;}
+.stat-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--t);letter-spacing:-0.02em;margin-bottom:2px;}
+.stat-num span{color:var(--acc2);}
+.stat-label{font-size:10px;color:var(--t3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+.stat-div{width:1px;height:36px;background:var(--b2);}
+
+/* ── SECTIONS ── */
+.section{padding:88px 48px;max-width:1100px;margin:0 auto;}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--acc4);border:1px solid rgba(99,102,241,0.2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--acc2);font-weight:600;letter-spacing:.03em;margin-bottom:18px;}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;}
+.section-title em{font-style:italic;color:var(--acc2);}
+.section-body{font-size:15px;color:var(--t2);line-height:1.8;font-weight:300;max-width:540px;}
+
+/* ── QUIZ SECTION ── */
+.quiz-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);}
+.quiz-inner{max-width:1100px;margin:0 auto;padding:88px 48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.quiz-progress{height:2px;background:var(--s4);border-radius:2px;margin-bottom:20px;overflow:hidden;}
+.quiz-prog-fill{height:100%;width:33%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:2px;}
+.quiz-step-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc2);margin-bottom:6px;}
+.quiz-q-big{font-size:22px;font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:18px;}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{padding:11px 14px;border:1.5px solid var(--b2);border-radius:11px;background:var(--s2);font-size:13px;color:var(--t2);font-weight:400;cursor:pointer;transition:all .12s;display:flex;align-items:center;justify-content:space-between;}
+.quiz-opt:hover{border-color:var(--b3);color:var(--t);}
+.quiz-opt.active{border-color:var(--acc);background:var(--acc3);color:var(--t);}
+
+/* ── FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-top:52px;}
+.feat-card{background:var(--bg);padding:36px 28px;transition:background .2s;position:relative;overflow:hidden;}
+.feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));opacity:0;transition:opacity .25s;}
+.feat-card:hover{background:var(--s1);}
+.feat-card:hover::after{opacity:1;}
+.feat-icon{font-size:26px;margin-bottom:16px;display:block;}
+.feat-title{font-size:15px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px;}
+.feat-body{font-size:13px;color:var(--t2);line-height:1.7;font-weight:300;}
+
+/* ── BADGES ── */
+.badges-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);}
+.badges-inner{max-width:1100px;margin:0 auto;padding:88px 48px;}
+.badges-row{display:flex;gap:10px;margin-top:48px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
+.badges-row::-webkit-scrollbar{display:none;}
+.badge-card{flex-shrink:0;background:var(--s2);border:1px solid var(--b2);border-radius:13px;padding:22px 18px;text-align:center;min-width:126px;transition:all .2s;}
+.badge-card:hover{background:var(--s3);border-color:var(--b3);transform:translateY(-3px);}
+.badge-card.legend{background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(168,85,247,0.07));border-color:rgba(99,102,241,0.28);}
+.badge-icon{font-size:26px;margin-bottom:8px;}
+.badge-name{font-size:12px;font-weight:700;margin-bottom:3px;}
+.badge-pts{font-size:10px;color:var(--t3);font-weight:500;}
+.badge-pts span{color:var(--acc2);}
+
+/* ── SOCIAL ── */
+.social-wrap{background:var(--bg);padding:88px 48px;}
+.social-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.feed-demo{background:var(--s1);border:1px solid var(--b2);border-radius:16px;overflow:hidden;}
+.feed-header{padding:13px 16px;border-bottom:1px solid var(--b);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);}
+.feed-item{padding:11px 16px;border-bottom:1px solid var(--b);display:flex;gap:8px;align-items:flex-start;}
+.feed-item:last-child{border-bottom:none;}
+.feed-av{width:26px;height:26px;border-radius:50%;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;color:var(--t3);flex-shrink:0;margin-top:1px;}
+.feed-body{flex:1;}
+.feed-txt{font-size:12px;color:var(--t2);line-height:1.5;}
+.feed-txt strong{color:var(--t);font-weight:600;}
+.feed-txt em{color:var(--acc2);font-style:normal;font-weight:500;}
+.feed-time{font-size:10px;color:var(--t4);margin-top:2px;}
+
+/* ── REVIEWS ── */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.review-card{background:var(--s1);border:1px solid var(--b);border-radius:13px;padding:22px;transition:border-color .2s;}
+.review-card:hover{border-color:var(--b2);}
+.review-stars{color:var(--ylw);font-size:11px;letter-spacing:2px;margin-bottom:8px;}
+.review-film{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);margin-bottom:7px;}
+.review-text{font-family:'DM Serif Display',serif;font-style:italic;font-size:14px;line-height:1.6;color:var(--t2);margin-bottom:16px;}
+.review-user{display:flex;align-items:center;gap:7px;}
+.review-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--prp));display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;flex-shrink:0;}
+.review-name{font-size:11px;color:var(--t3);}
+
+/* ── WAITLIST ── */
+.waitlist-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:88px 48px;text-align:center;}
+.waitlist-inner{max-width:520px;margin:0 auto;}
+.waitlist-title{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,40px);letter-spacing:-0.02em;line-height:1.15;margin-bottom:10px;}
+.waitlist-title em{font-style:italic;color:var(--acc2);}
+.waitlist-sub{font-size:14px;color:var(--t2);font-weight:300;margin-bottom:28px;line-height:1.7;}
+.waitlist-form{display:flex;gap:8px;max-width:420px;margin:0 auto;}
+.waitlist-input{flex:1;background:var(--s2);border:1.5px solid var(--b2);border-radius:11px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--t);outline:none;transition:border-color .18s;min-width:0;}
+.waitlist-input::placeholder{color:var(--t4);}
+.waitlist-input:focus{border-color:var(--acc);}
+.waitlist-btn{background:var(--acc);color:#fff;border:none;padding:13px 20px;border-radius:11px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0;}
+.waitlist-btn:hover{background:var(--acc2);}
+.waitlist-btn:disabled{opacity:.5;cursor:not-allowed;}
+.waitlist-ok{display:none;align-items:center;justify-content:center;gap:8px;color:var(--grn);font-size:14px;font-weight:500;margin-top:12px;}
+.waitlist-ok.show{display:flex;}
+.waitlist-err{font-size:12px;color:#EF4444;margin-top:8px;display:none;}
+.waitlist-err.show{display:block;}
+.waitlist-micro{font-size:11px;color:var(--t4);margin-top:14px;}
+
+/* ── CTA ── */
+.cta-section{background:linear-gradient(160deg,rgba(99,102,241,0.18) 0%,rgba(99,102,241,0.04) 50%,transparent 100%),var(--s1);border-top:1px solid rgba(99,102,241,0.18);border-bottom:1px solid var(--b);padding:110px 48px;text-align:center;}
+.cta-logo{font-family:'DM Serif Display',serif;font-size:clamp(60px,12vw,120px);letter-spacing:-0.03em;line-height:1;margin-bottom:14px;}
+.cta-logo span{color:var(--acc2);}
+.cta-sub{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(15px,2vw,21px);color:var(--t2);margin-bottom:8px;}
+.cta-sub2{font-size:12px;color:var(--t4);margin-bottom:36px;letter-spacing:.02em;}
+.cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:20px;letter-spacing:-0.02em;flex-shrink:0;}
+.footer-logo span{color:var(--acc2);}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-link{font-size:12px;color:var(--t3);text-decoration:none;transition:color .2s;}
+.footer-link:hover{color:var(--t2);}
+.footer-txt{font-size:12px;color:var(--t4);flex-shrink:0;}
+
+/* ── FADE UP ── */
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  nav{padding:14px 18px;}
+  .nav-links{display:none;}
+  .hero{padding:100px 20px 52px;min-height:100svh;}
+  .hero-tagline{font-size:clamp(15px,4vw,20px);}
+  .hero-actions{flex-direction:column;width:100%;max-width:320px;margin:0 auto;}
+  .hero-actions a{width:100%;text-align:center;}
+  .films-scroll-section{padding:28px 0;}
+  .film-poster{width:72px;height:108px;}
+  .stats-bar{gap:16px;padding:20px 18px;flex-wrap:wrap;justify-content:space-around;}
+  .stat-div{display:none;}
+  .stat-num{font-size:24px;}
+  .section{padding:56px 18px;}
+  .section-title{font-size:clamp(26px,7vw,38px);}
+  .quiz-inner{grid-template-columns:1fr;gap:32px;padding:56px 18px;}
+  .features-grid{grid-template-columns:1fr;border-radius:12px;}
+  .feat-card{padding:28px 22px;}
+  .badges-inner{padding:56px 18px;}
+  .badges-row{gap:8px;}
+  .badge-card{min-width:100px;padding:18px 12px;}
+  .social-wrap{padding:56px 18px;}
+  .social-inner{grid-template-columns:1fr;gap:32px;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .waitlist-section{padding:64px 18px;}
+  .waitlist-form{flex-direction:column;}
+  .waitlist-btn{width:100%;}
+  .cta-section{padding:72px 18px;}
+  .cta-actions{flex-direction:column;align-items:center;}
+  .cta-actions a{width:100%;max-width:320px;text-align:center;}
+  footer{flex-direction:column;text-align:center;padding:28px 18px;}
+  .footer-links{justify-content:center;}
+}
+@media(max-width:480px){
+  .hero-logo{font-size:clamp(72px,20vw,110px);}
+  .quiz-opts{gap:5px;}
+  .quiz-opt{padding:10px 12px;font-size:12px;}
+  .badge-card{min-width:88px;padding:14px 10px;}
+  .badge-icon{font-size:20px;}
+  .badge-name{font-size:11px;}
+  .feat-card{padding:24px 18px;}
+  .review-card{padding:18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">ra<span>ck</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="#como-funciona">Cómo funciona</a>
+    <a class="nav-link" href="#comunidad">Comunidad</a>
+    <a class="nav-link" href="#ranking">Ranking</a>
+    <a class="nav-link" href="#acceso">Acceso</a>
+  </div>
+  <a href="https://paulaconsproyectos.github.io/rack/" class="nav-cta">Entrar gratis</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-backdrop" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <h1 class="hero-logo">ra<span>ck</span></h1>
+    <p class="hero-tagline">El cine que <strong>mereces</strong> ver.</p>
+    <p class="hero-film-credit">Ahora en pantalla: <span id="heroFilmTitle">—</span></p>
+    <div class="hero-actions">
+      <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
+      <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PÓSTERS SCROLL ── -->
+<div class="films-scroll-section">
+  <div class="films-track" id="filmsTrack"></div>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">6<span>✦</span></div>
+    <div class="stat-label">Preguntas · 30 seg</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat-item">
+    <div class="stat-num">7<span>+</span></div>
+    <div class="stat-label">Plataformas</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat-item">
+    <div class="stat-num">1</div>
+    <div class="stat-label">Recomendación perfecta</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat-item">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Combinaciones posibles</div>
+  </div>
+</div>
+
+<!-- ── QUIZ ── -->
+<div class="quiz-section" id="como-funciona">
+  <div class="quiz-inner">
+    <div class="fade-up">
+      <div class="section-tag">🎯 ¿Qué mood tienes hoy?</div>
+      <h2 class="section-title">Tú pones el mood.<br/><em>Rack pone la película.</em></h2>
+      <p class="section-body">No hace falta saber qué quieres ver. Solo necesitas saber cómo estás.<br/><br/>
+      6 preguntas sobre tu mood, el tiempo que tienes, con quién estás y qué plataformas usas. Rack cruza todo y te da lo que necesitas ver — no una lista, una película.</p>
+      <br/>
+      <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary" style="display:inline-block;margin-top:8px;">¿Qué mood tienes hoy? →</a>
+    </div>
+    <div class="fade-up">
+      <div class="quiz-progress"><div class="quiz-prog-fill"></div></div>
+      <div class="quiz-step-lbl">Pregunta 2 de 6</div>
+      <div class="quiz-q-big">¿Qué formato prefieres?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt active">🎬 Película <span style="opacity:.4;font-size:11px;">✓</span></div>
+        <div class="quiz-opt">📺 Miniserie</div>
+        <div class="quiz-opt">🎞 Serie corta</div>
+        <div class="quiz-opt">📡 Serie larga</div>
+        <div class="quiz-opt">🎲 Lo que sea</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="section fade-up">
+  <div class="section-tag">⚡ Todo lo que hace Rack</div>
+  <h2 class="section-title">Más que recomendaciones.<br/><em>Tu vida cinéfila.</em></h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <span class="feat-icon">🎭</span>
+      <h3 class="feat-title">¿Qué mood tienes hoy?</h3>
+      <p class="feat-body">6 preguntas. Tu mood, tu formato, con quién estás y qué plataformas tienes. Rack te da lo que necesitas ver — no una lista, una película.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🍿</span>
+      <h3 class="feat-title">Modo Maratón</h3>
+      <p class="feat-body">¿Tienes todo el día? Actívalo y Rack te construye una sesión completa y curada. Tú solo tienes que sentarte.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📺</span>
+      <h3 class="feat-title">Película, Miniserie, Serie — sin líos</h3>
+      <p class="feat-body">Rack detecta automáticamente si es una película de 90 min, una miniserie de 6 episodios o una serie de 8 temporadas. Tú decides cuánto tiempo tienes.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🔔</span>
+      <h3 class="feat-title">Solo los estrenos que te importan</h3>
+      <p class="feat-body">Te avisamos cuando llega algo que encaja con tu mood. Sin ruido. Solo lo que necesitas ver.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🔍</span>
+      <h3 class="feat-title">Directo a tu plataforma</h3>
+      <p class="feat-body">Encuentra lo que quieres ver y accede directo a Netflix, HBO Max, Disney+, Prime, Filmin, Apple TV+ o Movistar+ con un toque.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📝</span>
+      <h3 class="feat-title">Tu historial cinéfilo</h3>
+      <p class="feat-body">Marca lo que has visto, guarda lo que quieres ver, escribe tu reseña. Todo en un sitio, siempre contigo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── BADGES ── -->
+<div class="badges-section" id="ranking">
+  <div class="badges-inner fade-up">
+    <div class="section-tag">🏆 Ranking cinéfilo</div>
+    <h2 class="section-title">Cada película que ves <em>cuenta.</em></h2>
+    <p class="section-body">Suma puntos por cada título visto y reseñado. Sube de rango. Compite con tus amigos. ¿Llegas a Leyenda?</p>
+    <div class="badges-row">
+      <div class="badge-card"><div class="badge-icon">👁</div><div class="badge-name">Espectador</div><div class="badge-pts">desde <span>0 pts</span></div></div>
+      <div class="badge-card"><div class="badge-icon">🎬</div><div class="badge-name">Aficionado</div><div class="badge-pts">desde <span>100 pts</span></div></div>
+      <div class="badge-card"><div class="badge-icon">🎞</div><div class="badge-name">Cinéfilo</div><div class="badge-pts">desde <span>300 pts</span></div></div>
+      <div class="badge-card"><div class="badge-icon">🎭</div><div class="badge-name">Auteur</div><div class="badge-pts">desde <span>600 pts</span></div></div>
+      <div class="badge-card"><div class="badge-icon">✍️</div><div class="badge-name">Crítico</div><div class="badge-pts">desde <span>1.000 pts</span></div></div>
+      <div class="badge-card"><div class="badge-icon">🏆</div><div class="badge-name">Maestro</div><div class="badge-pts">desde <span>2.000 pts</span></div></div>
+      <div class="badge-card legend"><div class="badge-icon">⭐</div><div class="badge-name">Leyenda</div><div class="badge-pts">desde <span>5.000 pts</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SOCIAL ── -->
+<div class="social-wrap" id="comunidad">
+  <div class="social-inner">
+    <div class="fade-up">
+      <div class="section-tag">👥 Comunidad</div>
+      <h2 class="section-title">El cine siempre fue mejor <em>en compañía.</em></h2>
+      <p class="section-body">Ve lo que están viendo tus amigos en tiempo real. Lee sus reseñas. Compite en el ranking. Invítalos con tu código y ambos ganáis puntos.<br/><br/>Rack no es solo una app. Es la conversación que tienes después de la película.</p>
+      <br/>
+      <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary" style="display:inline-block;margin-top:8px;">Unirme →</a>
+    </div>
+    <div class="fade-up">
+      <div class="feed-demo">
+        <div class="feed-header">Actividad reciente</div>
+        <div class="feed-item">
+          <div class="feed-av">AB</div>
+          <div class="feed-body"><div class="feed-txt"><strong>Andrés Bernal</strong> ha visto <em>La Zona de Interés</em></div><div class="feed-time">hace 12 min</div></div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-av">MR</div>
+          <div class="feed-body"><div class="feed-txt"><strong>Marcos Ruiz</strong> ha añadido <em>Challengers</em> a su lista</div><div class="feed-time">hace 1h</div></div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-av">LT</div>
+          <div class="feed-body"><div class="feed-txt"><strong>Laia Torres</strong> ha reseñado <em>Vidas Pasadas</em></div><div class="feed-time">hace 3h</div></div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-av">SM</div>
+          <div class="feed-body"><div class="feed-txt"><strong>Sofía Martín</strong> completó una maratón de <em>3 películas</em></div><div class="feed-time">hace 5h</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── REVIEWS ── -->
+<section class="section fade-up">
+  <div class="section-tag">✍️ La comunidad opina</div>
+  <h2 class="section-title">Lo que dicen los que <em>ya descubrieron Rack.</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-film">Dune: Parte Dos</div>
+      <p class="review-text">Villeneuve lo vuelve a hacer. La escala visual es inalcanzable.</p>
+      <div class="review-user"><div class="review-av">MR</div><div class="review-name">@marcosr · Marcos Ruiz</div></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-film">Pobres Criaturas</div>
+      <p class="review-text">Yorgos en estado puro. Perturbadora, liberadora, completamente única.</p>
+      <div class="review-user"><div class="review-av">LT</div><div class="review-name">@laiat · Laia Torres</div></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-film">La Zona de Interés</div>
+      <p class="review-text">El horror en lo cotidiano. La película más importante del año.</p>
+      <div class="review-user"><div class="review-av">AB</div><div class="review-name">@andresb · Andrés Bernal</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WAITLIST ── -->
+<div class="waitlist-section" id="acceso">
+  <div class="waitlist-inner fade-up">
+    <div class="section-tag">🚀 Acceso anticipado</div>
+    <h2 class="waitlist-title">Sé de los primeros<br/><em>en descubrirla.</em></h2>
+    <p class="waitlist-sub">Déjanos tu email y te avisamos cuando lancemos. Sin spam. Solo cine.</p>
+    <div class="waitlist-form">
+      <input class="waitlist-input" id="waitlistEmail" type="email" placeholder="tu@email.com" autocomplete="email"/>
+      <button class="waitlist-btn" id="waitlistBtn" onclick="submitWaitlist()">Quiero acceso</button>
+    </div>
+    <div class="waitlist-ok" id="waitlistOk">✓ Apuntado. Te avisamos pronto.</div>
+    <div class="waitlist-err" id="waitlistErr">Algo ha fallado. Inténtalo de nuevo.</div>
+    <p class="waitlist-micro">Sin tarjeta. Sin trucos. Solo cine.</p>
+  </div>
+</div>
+
+<!-- ── CTA FINAL ── -->
+<div class="cta-section">
+  <div class="cta-logo">ra<span>ck</span></div>
+  <p class="cta-sub">El cine que mereces ver.</p>
+  <p class="cta-sub2">Sin tarjeta. Sin trucos. Solo cine.</p>
+  <div class="cta-actions">
+    <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
+    <a href="https://paulaconsproyectos.github.io/rack/" class="btn-secondary">🍿 Modo Maratón</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">ra<span>ck</span></div>
+  <div class="footer-links">
+    <a class="footer-link" href="privacidad.html">Privacidad</a>
+    <a class="footer-link" href="cookies.html">Cookies</a>
+    <a class="footer-link" href="terminos.html">Términos</a>
+    <a class="footer-link" href="mailto:hola@rack.io">Contacto</a>
+  </div>
+  <div class="footer-txt">© 2025 Rack</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── SUPABASE (mismas credenciales que la app) ──
+const SUPA_URL = "https://scqoqwmkptyxwpiwhkyk.supabase.co";
+const SUPA_KEY = "sb_publishable_GPGtFCLX8xNSIvyCznVDrg_K3xhtb4N";
+
+const TMDB_KEY = "10f1051018046e4262a70010b517415c";
+const IMG_W    = "https://image.tmdb.org/t/p/w300";
+const IMG_ORIG = "https://image.tmdb.org/t/p/original";
+
+// ── WAITLIST → Supabase ──
+async function submitWaitlist(){
+  const emailEl = document.getElementById('waitlistEmail');
+  const btn     = document.getElementById('waitlistBtn');
+  const ok      = document.getElementById('waitlistOk');
+  const err     = document.getElementById('waitlistErr');
+  const email   = emailEl.value.trim();
+  if(!email || !email.includes('@')){ err.textContent='Introduce un email válido.'; err.classList.add('show'); return; }
+  btn.disabled = true; btn.textContent = '…';
+  err.classList.remove('show'); ok.classList.remove('show');
+  try {
+    const res = await fetch(`${SUPA_URL}/rest/v1/waitlist`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':`Bearer ${SUPA_KEY}`,'Prefer':'return=minimal'},
+      body: JSON.stringify({email, created_at: new Date().toISOString()})
+    });
+    if(res.ok || res.status===409){
+      ok.classList.add('show');
+      emailEl.value = '';
+    } else { throw new Error(res.status); }
+  } catch(e){
+    err.textContent = 'Algo ha fallado. Inténtalo de nuevo.';
+    err.classList.add('show');
+  }
+  btn.disabled = false; btn.textContent = 'Quiero acceso';
+}
+
+// Enter key en el input
+document.getElementById('waitlistEmail').addEventListener('keydown', e => {
+  if(e.key === 'Enter') submitWaitlist();
+});
+
+// ── TMDB ──
+const CULT_IDS = [
+  {id:769,  title:"Uno de los Nuestros"},
+  {id:238,  title:"El Padrino"},
+  {id:240,  title:"El Padrino II"},
+  {id:424,  title:"La Lista de Schindler"},
+  {id:637,  title:"La Vida es Bella"},
+  {id:680,  title:"Pulp Fiction"},
+  {id:11216,title:"Cinema Paradiso"},
+  {id:4935, title:"Amélie"},
+  {id:807,  title:"Seven"},
+  {id:598,  title:"Ciudad de Dios"},
+  {id:289,  title:"Casablanca"},
+  {id:372058,title:"Your Name"},
+  {id:244786,title:"Whiplash"},
+  {id:539,  title:"Psicosis"},
+  {id:155,  title:"El Caballero Oscuro"},
+  {id:122,  title:"El Señor de los Anillos"},
+  {id:13,   title:"Forrest Gump"},
+  {id:389,  title:"12 Angry Men"},
+  {id:105,  title:"Regreso al Futuro"},
+  {id:497,  title:"El Show de Truman"},
+];
+
+let heroPool = [], heroIdx = 0;
+function shuffle(a){ return a.sort(()=>Math.random()-.5); }
+
+async function buildHeroPool(){
+  const cult = await Promise.allSettled(
+    CULT_IDS.map(f=>fetch(`https://api.themoviedb.org/3/movie/${f.id}?api_key=${TMDB_KEY}&language=es-ES`).then(r=>r.json()).then(d=>({backdrop:d.backdrop_path?IMG_ORIG+d.backdrop_path:null,title:d.title||f.title})))
+  );
+  cult.forEach(r=>{ if(r.status==='fulfilled'&&r.value.backdrop) heroPool.push(r.value); });
+  try {
+    const tr = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_KEY}&language=es-ES`);
+    const td = await tr.json();
+    (td.results||[]).slice(0,10).forEach(m=>{ if(m.backdrop_path) heroPool.push({backdrop:IMG_ORIG+m.backdrop_path,title:m.title||m.name}); });
+  } catch(e){}
+  shuffle(heroPool);
+  if(heroPool.length>0) showHeroFrame(0);
+  if(heroPool.length>1) setInterval(()=>{ heroIdx=(heroIdx+1)%heroPool.length; showHeroFrame(heroIdx); }, 8000);
+}
+
+function showHeroFrame(idx){
+  const item=heroPool[idx]; if(!item) return;
+  const bg=document.getElementById('heroBg');
+  const titleEl=document.getElementById('heroFilmTitle');
+  const img=new Image();
+  img.onload=()=>{
+    bg.style.transition='opacity 0s'; bg.style.opacity='0';
+    setTimeout(()=>{ bg.style.backgroundImage=`url(${item.backdrop})`; bg.style.transition='opacity 1.4s ease'; bg.style.opacity='1'; titleEl.textContent=item.title; },200);
+  };
+  img.src=item.backdrop;
+}
+
+async function loadPosters(){
+  const track=document.getElementById('filmsTrack');
+  let posters=[];
+  const cult=await Promise.allSettled(CULT_IDS.slice(0,12).map(f=>fetch(`https://api.themoviedb.org/3/movie/${f.id}?api_key=${TMDB_KEY}&language=es-ES`).then(r=>r.json()).then(d=>({src:IMG_W+d.poster_path,title:d.title||f.title,ok:!!d.poster_path}))));
+  cult.forEach(r=>{ if(r.status==='fulfilled'&&r.value.ok) posters.push(r.value); });
+  try {
+    const pr=await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_KEY}&language=es-ES&page=1`);
+    const pd=await pr.json();
+    (pd.results||[]).slice(0,10).forEach(m=>{ if(m.poster_path) posters.push({src:IMG_W+m.poster_path,title:m.title}); });
+  } catch(e){}
+  if(!posters.length){ track.closest('.films-scroll-section').style.display='none'; return; }
+  shuffle(posters);
+  [...posters,...posters].forEach(p=>{ const img=document.createElement('img'); img.src=p.src; img.alt=p.title; img.title=p.title; img.className='film-poster'; img.loading='lazy'; track.appendChild(img); });
+}
+
+// ── INTERSECTION OBSERVER ──
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }); },{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// ── QUIZ OPTS ──
+document.querySelectorAll('.quiz-opt').forEach(opt=>{
+  opt.addEventListener('click',function(){ document.querySelectorAll('.quiz-opt').forEach(o=>o.class
