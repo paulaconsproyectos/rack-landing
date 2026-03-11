@@ -45,7 +45,7 @@
   --bg:#09090B;--s1:#0F0F12;--s2:#18181B;--s3:#1F1F24;--s4:#27272C;--s5:#3F3F46;
   --b:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.10);--b3:rgba(255,255,255,0.18);
   --t:#F4F4F5;--t2:#A1A1AA;--t3:#71717A;--t4:#52525B;
-  --acc:#6366F1;--acc2:#818CF8;--acc3:rgba(99,102,241,0.15);--acc4:rgba(99,102,241,0.08);
+  --acc:#C9A96E;--acc2:#DFC08A;--acc3:rgba(201,169,110,0.15);--acc4:rgba(201,169,110,0.08);
   --grn:#22C55E;--ylw:#F59E0B;--prp:#A855F7;--blu:#3B82F6;--org:#F97316;
 }
 html{scroll-behavior:smooth;}
@@ -60,7 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .nav-links{display:flex;gap:28px;align-items:center;}
 .nav-link{font-size:13px;color:var(--t3);text-decoration:none;font-weight:500;transition:color .2s;}
 .nav-link:hover{color:var(--t);}
-.nav-cta{background:var(--acc);color:#fff;border:none;padding:9px 20px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap;}
+.nav-cta{background:var(--acc);color:var(--bg);border:none;padding:9px 20px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap;}
 .nav-cta:hover{background:var(--acc2);}
 
 /* HERO */
@@ -77,7 +77,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .hero-film-credit{font-size:11px;color:var(--t4);letter-spacing:.06em;margin-bottom:36px;}
 .hero-film-credit span{color:var(--t3);}
 .hero-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;}
-.btn-primary{background:var(--acc);color:#fff;border:none;padding:14px 28px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-block;white-space:nowrap;}
+.btn-primary{background:var(--acc);color:var(--bg);border:none;padding:14px 28px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-block;white-space:nowrap;}
 .btn-primary:hover{background:var(--acc2);transform:translateY(-1px);}
 .btn-secondary{background:rgba(255,255,255,0.07);color:var(--t2);border:1px solid var(--b2);padding:13px 24px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-block;backdrop-filter:blur(8px);white-space:nowrap;}
 .btn-secondary:hover{border-color:var(--b3);color:var(--t);}
@@ -91,7 +91,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .films-track:hover{animation-play-state:paused;}
 @keyframes scrollFilms{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .film-poster{width:90px;height:135px;border-radius:9px;object-fit:cover;flex-shrink:0;border:1px solid var(--b);transition:all .3s;filter:grayscale(15%);}
-.film-poster:hover{transform:scale(1.07) translateY(-4px);filter:grayscale(0%);box-shadow:0 14px 36px rgba(0,0,0,.6),0 0 0 1px rgba(99,102,241,0.3);}
+.film-poster:hover{transform:scale(1.07) translateY(-4px);filter:grayscale(0%);box-shadow:0 14px 36px rgba(0,0,0,.6),0 0 0 1px rgba(201,169,110,0.3);}
 
 /* STATS */
 .stats-bar{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:24px 48px;display:flex;align-items:center;justify-content:center;gap:56px;}
@@ -103,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 
 /* SECTIONS */
 .section{padding:88px 48px;max-width:1100px;margin:0 auto;}
-.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--acc4);border:1px solid rgba(99,102,241,0.2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--acc2);font-weight:600;letter-spacing:.03em;margin-bottom:18px;}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--acc4);border:1px solid rgba(201,169,110,0.2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--acc2);font-weight:600;letter-spacing:.03em;margin-bottom:18px;}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;}
 .section-title em{font-style:italic;color:var(--acc2);}
 .section-body{font-size:15px;color:var(--t2);line-height:1.8;font-weight:300;max-width:540px;}
@@ -137,7 +137,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .badges-row::-webkit-scrollbar{display:none;}
 .badge-card{flex-shrink:0;background:var(--s2);border:1px solid var(--b2);border-radius:13px;padding:22px 18px;text-align:center;min-width:126px;transition:all .2s;}
 .badge-card:hover{background:var(--s3);border-color:var(--b3);transform:translateY(-3px);}
-.badge-card.legend{background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(168,85,247,0.07));border-color:rgba(99,102,241,0.28);}
+.badge-card.legend{background:linear-gradient(135deg,rgba(201,169,110,0.12),rgba(201,169,110,0.05));border-color:rgba(201,169,110,0.28);}
 .badge-icon{font-size:26px;margin-bottom:8px;}
 .badge-name{font-size:12px;font-weight:700;margin-bottom:3px;}
 .badge-pts{font-size:10px;color:var(--t3);font-weight:500;}
@@ -178,7 +178,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .waitlist-input{flex:1;background:var(--s2);border:1.5px solid var(--b2);border-radius:11px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--t);outline:none;transition:border-color .18s;min-width:0;}
 .waitlist-input::placeholder{color:var(--t4);}
 .waitlist-input:focus{border-color:var(--acc);}
-.waitlist-btn{background:var(--acc);color:#fff;border:none;padding:13px 20px;border-radius:11px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0;}
+.waitlist-btn{background:var(--acc);color:var(--bg);border:none;padding:13px 20px;border-radius:11px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0;}
 .waitlist-btn:hover{background:var(--acc2);}
 .waitlist-btn:disabled{opacity:.5;cursor:not-allowed;}
 .waitlist-ok{display:none;align-items:center;justify-content:center;gap:8px;color:var(--grn);font-size:14px;font-weight:500;margin-top:12px;}
@@ -188,7 +188,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .waitlist-micro{font-size:11px;color:var(--t4);margin-top:14px;}
 
 /* CTA */
-.cta-section{background:linear-gradient(160deg,rgba(99,102,241,0.18) 0%,rgba(99,102,241,0.04) 50%,transparent 100%),var(--s1);border-top:1px solid rgba(99,102,241,0.18);border-bottom:1px solid var(--b);padding:110px 48px;text-align:center;}
+.cta-section{background:linear-gradient(160deg,rgba(201,169,110,0.18) 0%,rgba(201,169,110,0.04) 50%,transparent 100%),var(--s1);border-top:1px solid rgba(201,169,110,0.18);border-bottom:1px solid var(--b);padding:110px 48px;text-align:center;}
 .cta-logo-img{width:80px;height:80px;border-radius:20px;object-fit:cover;margin:0 auto 20px;display:block;box-shadow:0 16px 48px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,0.08);}
 .cta-wordmark{font-family:'DM Serif Display',serif;font-size:clamp(48px,10vw,96px);letter-spacing:-0.03em;line-height:1;margin-bottom:14px;}
 .cta-wordmark span{color:var(--acc2);}
@@ -269,7 +269,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
     <a class="nav-link" href="#ranking">Ranking</a>
     <a class="nav-link" href="#acceso">Acceso</a>
   </div>
-  <a href="https://paulaconsproyectos.github.io/rack/" class="nav-cta">Entrar gratis</a>
+  <a href="https://paulaconsproyectos.github.io/zineclub/" class="nav-cta">Entrar gratis</a>
 </nav>
 
 <!-- HERO -->
@@ -282,7 +282,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
     <p class="hero-tagline">Todo lo que <strong>mereces</strong> ver.</p>
     <p class="hero-film-credit">Ahora en pantalla: <span id="heroFilmTitle">—</span></p>
     <div class="hero-actions">
-      <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
+      <a href="https://paulaconsproyectos.github.io/zineclub/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
       <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
     </div>
   </div>
@@ -313,7 +313,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
       <p class="section-body">No hace falta saber qué quieres ver. Solo necesitas saber cómo estás.<br/><br/>
       6 preguntas sobre tu mood, el tiempo que tienes, con quién estás y qué plataformas usas. Zine Club cruza todo y te da lo que necesitas ver — no una lista, una película.</p>
       <br/>
-      <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary" style="display:inline-block;margin-top:8px;">¿Qué mood tienes hoy? →</a>
+      <a href="https://paulaconsproyectos.github.io/zineclub/" class="btn-primary" style="display:inline-block;margin-top:8px;">¿Qué mood tienes hoy? →</a>
     </div>
     <div class="fade-up">
       <div class="quiz-progress"><div class="quiz-prog-fill"></div></div>
@@ -370,7 +370,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
       <h2 class="section-title">El cine siempre fue mejor <em>en compañía.</em></h2>
       <p class="section-body">Ve lo que están viendo tus amigos en tiempo real. Lee sus reseñas. Compite en el ranking. Invítalos con tu código y ambos ganáis puntos.<br/><br/>Zine Club no es solo una app. Es la conversación que tienes después de la película.</p>
       <br/>
-      <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary" style="display:inline-block;margin-top:8px;">Unirme →</a>
+      <a href="https://paulaconsproyectos.github.io/zineclub/" class="btn-primary" style="display:inline-block;margin-top:8px;">Unirme →</a>
     </div>
     <div class="fade-up">
       <div class="feed-demo">
@@ -418,8 +418,8 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
   <p class="cta-sub">Todo lo que mereces ver.</p>
   <p class="cta-sub2">Sin tarjeta. Sin trucos. Solo cine.</p>
   <div class="cta-actions">
-    <a href="https://paulaconsproyectos.github.io/rack/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
-    <a href="https://paulaconsproyectos.github.io/rack/" class="btn-secondary">🍿 Modo Maratón</a>
+    <a href="https://paulaconsproyectos.github.io/zineclub/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
+    <a href="https://paulaconsproyectos.github.io/zineclub/" class="btn-secondary">🍿 Modo Maratón</a>
   </div>
 </div>
 
