@@ -103,15 +103,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .stat-div{width:1px;height:36px;background:var(--b2);}
 
 /* SECTIONS */
-.section{padding:88px 48px;max-width:1100px;margin:0 auto;}
+.section{padding:60px 48px;max-width:1100px;margin:0 auto;}
 .section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--acc4);border:1px solid rgba(201,169,110,0.2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--acc2);font-weight:600;letter-spacing:.03em;margin-bottom:18px;}
-.section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px;}
 .section-title em{font-style:italic;color:var(--acc2);}
 .section-body{font-size:15px;color:var(--t2);line-height:1.8;font-weight:300;max-width:540px;}
 
 /* QUIZ */
 .quiz-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);}
-.quiz-inner{max-width:1100px;margin:0 auto;padding:88px 48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.quiz-inner{max-width:1100px;margin:0 auto;padding:60px 48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
 .quiz-progress{height:2px;background:var(--s4);border-radius:2px;margin-bottom:20px;overflow:hidden;}
 .quiz-prog-fill{height:100%;width:33%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:2px;}
 .quiz-step-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc2);margin-bottom:6px;}
@@ -122,7 +122,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .quiz-opt.active{border-color:var(--acc);background:var(--acc3);color:var(--t);}
 
 /* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-top:52px;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-top:32px;}
 .feat-card{background:var(--bg);padding:36px 28px;transition:background .2s;position:relative;overflow:hidden;}
 .feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));opacity:0;transition:opacity .25s;}
 .feat-card:hover{background:var(--s1);}
@@ -133,8 +133,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 
 /* BADGES */
 .badges-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);}
-.badges-inner{max-width:1100px;margin:0 auto;padding:88px 48px;}
-.badges-row{display:flex;gap:10px;margin-top:48px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
+.badges-inner{max-width:1100px;margin:0 auto;padding:60px 48px;}
+.badges-row{display:flex;gap:10px;margin-top:28px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
 .badges-row::-webkit-scrollbar{display:none;}
 .badge-card{flex-shrink:0;background:var(--s2);border:1px solid var(--b2);border-radius:13px;padding:22px 18px;text-align:center;min-width:126px;transition:all .2s;}
 .badge-card:hover{background:var(--s3);border-color:var(--b3);transform:translateY(-3px);}
@@ -145,7 +145,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .badge-pts span{color:var(--acc2);}
 
 /* SOCIAL */
-.social-wrap{background:var(--bg);padding:88px 48px;}
+.social-wrap{background:var(--bg);padding:60px 48px;}
 .social-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
 .feed-demo{background:var(--s1);border:1px solid var(--b2);border-radius:16px;overflow:hidden;}
 .feed-header{padding:13px 16px;border-bottom:1px solid var(--b);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);}
@@ -159,7 +159,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .feed-time{font-size:10px;color:var(--t4);margin-top:2px;}
 
 /* REVIEWS */
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;}
 .review-card{background:var(--s1);border:1px solid var(--b);border-radius:13px;padding:22px;transition:border-color .2s;}
 .review-card:hover{border-color:var(--b2);}
 .review-stars{color:var(--ylw);font-size:11px;letter-spacing:2px;margin-bottom:8px;}
@@ -170,7 +170,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .review-name{font-size:11px;color:var(--t3);}
 
 /* WAITLIST */
-.waitlist-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:88px 48px;text-align:center;}
+.waitlist-section{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:60px 48px;text-align:center;}
 .waitlist-inner{max-width:520px;margin:0 auto;}
 .waitlist-title{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,40px);letter-spacing:-0.02em;line-height:1.15;margin-bottom:10px;}
 .waitlist-title em{font-style:italic;color:var(--acc2);}
@@ -210,7 +210,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 
 
 /* ── PRICING ── */
-.pricing-section{background:var(--bg);border-top:1px solid var(--b);padding:96px 48px;position:relative;overflow:hidden;}
+.pricing-section{background:var(--bg);border-top:1px solid var(--b);padding:72px 48px;position:relative;overflow:hidden;}
 .pricing-inner{max-width:1060px;margin:0 auto;}
 .pricing-grain{position:absolute;inset:0;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
 .pricing-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,0.07) 0%,transparent 70%);pointer-events:none;}
@@ -263,7 +263,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 @media(max-width:860px){
   .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
   .pc-popular{transform:translateY(0);}
-  .pricing-section{padding:64px 24px;}
+  .pricing-section{padding:48px 24px;}
 }
 
 
@@ -428,7 +428,7 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 
 
 <!-- BEFORE/AFTER -->
-<div style="background:var(--bg);border-bottom:1px solid var(--b);padding:48px 48px 40px;">
+<div style="background:var(--bg);border-bottom:1px solid var(--b);padding:36px 48px;">
   <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
     <div style="padding:28px 32px;background:var(--s1);border:1px solid var(--b2);border-radius:16px;">
       <div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);margin-bottom:16px;">Antes</div>
@@ -453,7 +453,6 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 <div class="quiz-section" id="como-funciona">
   <div class="quiz-inner">
     <div class="fade-up">
-      <div class="section-tag">Cómo funciona</div>
       <h2 class="section-title">Tú pones el mood.<br/><em>Zine Club pone la película — o la serie.</em></h2>
       <p class="section-body">Tienes cinco plataformas, doscientos títulos pendientes y veinte minutos antes de rendirte y poner lo de siempre.<br/><br/>
 Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién estás y qué servicios usas — y te da exactamente lo que necesitas ver. No una lista. Una recomendación.</p>
@@ -477,7 +476,6 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 
 <!-- FEATURES -->
 <section class="section fade-up">
-  <div class="section-tag">Lo que incluye</div>
   <h2 class="section-title">Películas, series, maratones.<br/><em>Sin perder el tiempo eligiendo.</em></h2>
   <div class="features-grid">
     <div class="feat-card glow-card"><span class="feat-icon">🎭</span><h3 class="feat-title">¿Qué mood tienes hoy?</h3><p class="feat-body">6 preguntas. Tu mood, tu formato, con quién estás y qué plataformas tienes. Zine Club te da lo que necesitas ver — no una lista, una película o una serie.</p></div>
@@ -492,7 +490,6 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 <!-- BADGES -->
 <div class="badges-section" id="ranking">
   <div class="badges-inner fade-up">
-    <div class="section-tag">🏆 Ranking cinéfilo</div>
     <h2 class="section-title">Cada película que ves <em>cuenta.</em></h2>
     <p class="section-body">Suma puntos por cada título visto y reseñado. Sube de rango. Compite con tus amigos. ¿Llegas a Leyenda?</p>
     <div class="badges-row">
@@ -511,7 +508,6 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 <div class="social-wrap" id="comunidad">
   <div class="social-inner">
     <div class="fade-up">
-      <div class="section-tag">👥 Comunidad</div>
       <h2 class="section-title">El cine siempre fue mejor <em>en compañía.</em></h2>
       <p class="section-body">Ve lo que están viendo tus amigos en tiempo real. Lee sus reseñas. Compite en el ranking. Invítalos con tu código y ambos ganáis puntos.<br/><br/>Zine Club no es solo una app. Es la conversación que tienes después de la película.</p>
       <br/>
@@ -531,7 +527,6 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 
 <!-- REVIEWS -->
 <section class="section fade-up">
-  <div class="section-tag">Lo que dicen</div>
   <h2 class="section-title">Opiniones reales.<br/><em>Sin filtros.</em></h2>
   <div class="reviews-grid">
     <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-film">Dune: Parte Dos</div><p class="review-text">Villeneuve lo vuelve a hacer. La escala visual es inalcanzable.</p><div class="review-user"><div class="review-av">MR</div><div class="review-name">@marcosr · Marcos Ruiz</div></div></div>
@@ -543,7 +538,6 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 <!-- WAITLIST -->
 <div class="waitlist-section" id="acceso">
   <div class="waitlist-inner fade-up">
-    <div class="section-tag">Acceso anticipado</div>
     <h2 class="waitlist-title">Deja tu email.<br/><em>Te avisamos cuando abramos.</em></h2>
     <p class="waitlist-sub">Déjanos tu email y te avisamos cuando lancemos. Sin spam. Solo cine.</p>
     <div class="waitlist-form">
@@ -562,7 +556,6 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
   <div class="pricing-grain"></div>
   <div class="pricing-glow"></div>
   <div class="pricing-inner">
-    <div class="section-tag">✦ Sin sorpresas</div>
     <h2 class="section-title">Un precio justo<br/><em>por lo que de verdad usas.</em></h2>
     <p class="section-body" style="margin-bottom:40px;max-width:460px;">Sin algoritmos de suscripción. Sin renovaciones ocultas. Solo cine — cuando quieras y como quieras.</p>
     <div class="pricing-grid">
