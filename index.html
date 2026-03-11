@@ -370,13 +370,13 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-backdrop" id="heroBg"></div>
+  <div class="hero-backdrop" id="heroBg" style="background-image:url('img/goodfellas.jpg');opacity:1;"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
     <h1 class="hero-wordmark">Zine <span>Club</span></h1>
     <p class="hero-tagline">Todo lo que <strong>mereces</strong> ver.</p>
-    <p class="hero-film-credit">Ahora en pantalla: <span id="heroFilmTitle">—</span></p>
+    <p class="hero-film-credit">Ahora en pantalla: <span id="heroFilmTitle">Uno de los Nuestros</span></p>
     <div class="hero-actions">
       <a href="https://paulaconsproyectos.github.io/zineclub/" class="btn-primary">✨ ¿Qué mood tienes hoy?</a>
       <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
@@ -386,7 +386,36 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 
 <!-- PÓSTERS SCROLL -->
 <div class="films-scroll-section">
-  <div class="films-track" id="filmsTrack"></div>
+  <div class="films-track" id="filmsTrack">
+    <img src="img/p_godfather.jpg" alt="El Padrino" class="film-poster" loading="lazy"/>
+    <img src="img/p_inception.jpg" alt="El Origen" class="film-poster" loading="lazy"/>
+    <img src="img/p_interstellar.jpg" alt="Interstellar" class="film-poster" loading="lazy"/>
+    <img src="img/p_darkknight.jpg" alt="El Caballero Oscuro" class="film-poster" loading="lazy"/>
+    <img src="img/p_parasite.jpg" alt="Parásitos" class="film-poster" loading="lazy"/>
+    <img src="img/p_oppenheimer.jpg" alt="Oppenheimer" class="film-poster" loading="lazy"/>
+    <img src="img/p_bladerunner.jpg" alt="Blade Runner 2049" class="film-poster" loading="lazy"/>
+    <img src="img/p_whiplash.jpg" alt="Whiplash" class="film-poster" loading="lazy"/>
+    <img src="img/p_pulpfiction.jpg" alt="Pulp Fiction" class="film-poster" loading="lazy"/>
+    <img src="img/p_joker.jpg" alt="Joker" class="film-poster" loading="lazy"/>
+    <img src="img/p_1917.jpg" alt="1917" class="film-poster" loading="lazy"/>
+    <img src="img/p_cityofgod.jpg" alt="Ciudad de Dios" class="film-poster" loading="lazy"/>
+    <img src="img/p_cinema.jpg" alt="Cinema Paradiso" class="film-poster" loading="lazy"/>
+    <img src="img/p_godfather2.jpg" alt="El Padrino II" class="film-poster" loading="lazy"/>
+    <img src="img/p_godfather.jpg" alt="El Padrino" class="film-poster" loading="lazy"/>
+    <img src="img/p_inception.jpg" alt="El Origen" class="film-poster" loading="lazy"/>
+    <img src="img/p_interstellar.jpg" alt="Interstellar" class="film-poster" loading="lazy"/>
+    <img src="img/p_darkknight.jpg" alt="El Caballero Oscuro" class="film-poster" loading="lazy"/>
+    <img src="img/p_parasite.jpg" alt="Parásitos" class="film-poster" loading="lazy"/>
+    <img src="img/p_oppenheimer.jpg" alt="Oppenheimer" class="film-poster" loading="lazy"/>
+    <img src="img/p_bladerunner.jpg" alt="Blade Runner 2049" class="film-poster" loading="lazy"/>
+    <img src="img/p_whiplash.jpg" alt="Whiplash" class="film-poster" loading="lazy"/>
+    <img src="img/p_pulpfiction.jpg" alt="Pulp Fiction" class="film-poster" loading="lazy"/>
+    <img src="img/p_joker.jpg" alt="Joker" class="film-poster" loading="lazy"/>
+    <img src="img/p_1917.jpg" alt="1917" class="film-poster" loading="lazy"/>
+    <img src="img/p_cityofgod.jpg" alt="Ciudad de Dios" class="film-poster" loading="lazy"/>
+    <img src="img/p_cinema.jpg" alt="Cinema Paradiso" class="film-poster" loading="lazy"/>
+    <img src="img/p_godfather2.jpg" alt="El Padrino II" class="film-poster" loading="lazy"/>
+  </div>
 </div>
 
 <!-- STATS -->
@@ -687,26 +716,12 @@ function showHeroFrame(idx){
   var item=heroPool[idx]; if(!item) return;
   var bg=document.getElementById('heroBg');
   var titleEl=document.getElementById('heroFilmTitle');
-  var img=new Image();
-  img.onload=function(){
-    bg.style.transition='none';
-    bg.style.opacity='0';
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        bg.style.transition='opacity 1.4s ease';
-        bg.style.backgroundImage='url("'+item.backdrop+'")';
-        bg.style.opacity='1';
-        if(titleEl) titleEl.textContent=item.title;
-      });
-    });
-  };
-  img.onerror=function(){
-    // Mostrar aunque falle la carga
+  bg.style.opacity='0';
+  setTimeout(function(){
     bg.style.backgroundImage='url("'+item.backdrop+'")';
     bg.style.opacity='1';
     if(titleEl) titleEl.textContent=item.title;
-  };
-  img.src=item.backdrop;
+  },400);
 }
 
 function buildHeroPool(){
@@ -715,12 +730,7 @@ function buildHeroPool(){
   setInterval(()=>{ heroIdx=(heroIdx+1)%heroPool.length; showHeroFrame(heroIdx); },7000);
 }
 
-function loadPosters(){
-  var track=document.getElementById('filmsTrack');
-  if(!track) return;
-  var posters=shuffle([...POSTER_FILMS]);
-  renderPosters(track, posters);
-}
+function loadPosters(){ /* static HTML */ }
 
 function renderPosters(track,posters){
   if(track.children.length) return;
