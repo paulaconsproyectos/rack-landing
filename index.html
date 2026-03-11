@@ -356,32 +356,6 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
   box-shadow: 0 0 8px rgba(201,169,110,0.5);
 }
 
-/* ── CUSTOM CURSOR ── */
-#cursor {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--acc);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-  mix-blend-mode: screen;
-}
-#cursor-ring {
-  position: fixed;
-  width: 32px; height: 32px;
-  border: 1px solid rgba(201,169,110,0.45);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9997;
-  transform: translate(-50%, -50%);
-  transition: transform 0.18s ease, width 0.22s ease, height 0.22s ease, opacity 0.22s ease, border-color 0.2s ease;
-}
-body { cursor: none; }
-a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc { cursor: none; }
-@media (pointer: coarse) {
-  body { cursor: auto; }
   a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc { cursor: auto; }
   #cursor, #cursor-ring { display: none; }
 }
@@ -488,8 +462,6 @@ a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc {
 </head>
 <body>
 <div id="scroll-progress"></div>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
 
 <!-- NAV -->
 <nav>
@@ -806,33 +778,6 @@ function updateProgress() {
   if (progressBar) progressBar.style.width = pct + '%';
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
-
-// ── CUSTOM CURSOR ──
-const cur = document.getElementById('cursor');
-const curR = document.getElementById('cursor-ring');
-let mx = -100, my = -100, rx = -100, ry = -100;
-document.addEventListener('mousemove', (e) => {
-  mx = e.clientX; my = e.clientY;
-  if (cur) { cur.style.left = mx + 'px'; cur.style.top = my + 'px'; }
-});
-function lerpCursor() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  if (curR) { curR.style.left = rx + 'px'; curR.style.top = ry + 'px'; }
-  requestAnimationFrame(lerpCursor);
-}
-lerpCursor();
-// Cursor states
-document.querySelectorAll('a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    if (cur) { cur.style.width = '12px'; cur.style.height = '12px'; cur.style.background = 'var(--acc2)'; }
-    if (curR) { curR.style.width = '48px'; curR.style.height = '48px'; curR.style.borderColor = 'rgba(201,169,110,0.7)'; }
-  });
-  el.addEventListener('mouseleave', () => {
-    if (cur) { cur.style.width = '8px'; cur.style.height = '8px'; cur.style.background = 'var(--acc)'; }
-    if (curR) { curR.style.width = '32px'; curR.style.height = '32px'; curR.style.borderColor = 'rgba(201,169,110,0.45)'; }
-  });
-});
 
 // ── CARD 3D TILT ──
 document.querySelectorAll('.tilt-card').forEach(card => {
