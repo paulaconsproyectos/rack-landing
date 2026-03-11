@@ -208,6 +208,93 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 .footer-link:hover{color:var(--t2);}
 .footer-txt{font-size:12px;color:var(--t4);flex-shrink:0;}
 
+
+/* ── PRICING ── */
+.pricing-section{background:var(--bg);border-top:1px solid var(--b);padding:96px 48px;position:relative;overflow:hidden;}
+.pricing-inner{max-width:1060px;margin:0 auto;}
+.pricing-grain{position:absolute;inset:0;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
+.pricing-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,0.07) 0%,transparent 70%);pointer-events:none;}
+
+/* toggle */
+.pricing-toggle{display:flex;align-items:center;gap:4px;background:var(--s2);border:1px solid var(--b2);border-radius:999px;padding:4px;width:fit-content;margin:0 auto 52px;}
+.ptoggle-btn{padding:8px 22px;border-radius:999px;border:none;background:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--t3);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.ptoggle-btn.active{background:var(--acc);color:var(--bg);}
+.ptoggle-badge{background:rgba(201,169,110,0.15);color:var(--acc2);border-radius:999px;padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:.03em;transition:all .2s;}
+.ptoggle-btn.active .ptoggle-badge{background:rgba(0,0,0,0.18);color:var(--bg);}
+
+/* grid */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start;}
+.pc{background:var(--s1);border:1px solid var(--b2);border-radius:20px;padding:30px;position:relative;transition:border-color .22s,box-shadow .22s;}
+.pc:hover{border-color:var(--b3);}
+.pc-popular{background:linear-gradient(160deg,#17171D 0%,var(--bg) 100%);border-color:var(--acc);box-shadow:0 0 0 1px rgba(201,169,110,0.12),0 24px 64px rgba(0,0,0,.6),0 0 48px rgba(201,169,110,0.07);transform:translateY(-10px);}
+.pc-popular:hover{border-color:var(--acc2);}
+.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--bg);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 14px;white-space:nowrap;}
+
+/* header */
+.pc-name{font-family:'DM Serif Display',serif;font-size:22px;color:var(--t);margin-bottom:18px;letter-spacing:-.01em;}
+.pc-price-block{margin-bottom:6px;min-height:68px;}
+.pc-price{font-family:'DM Serif Display',serif;font-size:52px;color:var(--t);line-height:1;letter-spacing:-.04em;display:flex;align-items:flex-start;gap:2px;}
+.pc-euro{font-size:20px;color:var(--t3);margin-top:11px;font-family:'DM Sans',sans-serif;font-weight:400;}
+.pc-popular .pc-price{color:var(--acc2);}
+.pc-popular .pc-euro{color:var(--acc);}
+.pc-period{font-size:12px;color:var(--t3);margin-top:4px;margin-bottom:12px;letter-spacing:.01em;min-height:18px;}
+.pc-desc{font-size:13px;color:var(--t3);line-height:1.65;margin-bottom:22px;min-height:42px;font-weight:300;}
+
+/* cta btn */
+.pc-cta{display:block;width:100%;padding:13px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;text-align:center;text-decoration:none;margin-bottom:24px;transition:all .18s;cursor:pointer;border:none;letter-spacing:-.01em;}
+.pc-cta-gold{background:var(--acc);color:var(--bg);}
+.pc-cta-gold:hover{background:var(--acc2);transform:translateY(-1px);}
+.pc-cta-ghost{background:rgba(255,255,255,0.05);color:var(--t2);border:1px solid var(--b2);}
+.pc-cta-ghost:hover{border-color:var(--b3);color:var(--t);}
+
+/* features */
+.pc-features{list-style:none;border-top:1px solid var(--b);padding-top:18px;display:flex;flex-direction:column;gap:9px;}
+.pc-features li{font-size:13px;color:var(--t2);display:flex;align-items:center;gap:9px;font-weight:300;}
+.pc-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--t4);flex-shrink:0;}
+.pc-popular .pc-features li::before{background:var(--acc);}
+.pc-feat-head{font-size:10px !important;font-weight:700 !important;letter-spacing:.09em;text-transform:uppercase;color:var(--acc2) !important;margin-top:2px;}
+.pc-feat-head::before{display:none !important;}
+
+/* note */
+.pricing-note{text-align:center;font-size:12px;color:var(--t4);margin-top:36px;}
+.pricing-note a{color:var(--t3);text-decoration:underline;text-underline-offset:3px;}
+
+/* responsive */
+@media(max-width:860px){
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
+  .pc-popular{transform:translateY(0);}
+  .pricing-section{padding:64px 24px;}
+}
+
+
+/* ── GLOWING EFFECT ── */
+.glow-card{position:relative;border-radius:inherit;}
+.glow-card::after{
+  content:'';pointer-events:none;
+  position:absolute;inset:-1px;border-radius:inherit;
+  opacity:0;transition:opacity .35s ease;
+  background:conic-gradient(
+    from calc(var(--glow-a,0) * 1deg) at 50% 50%,
+    rgba(201,169,110,0) 0deg,
+    rgba(201,169,110,0.85) 40deg,
+    rgba(223,192,138,0.55) 80deg,
+    rgba(201,169,110,0) 130deg,
+    rgba(201,169,110,0) 360deg
+  );
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  padding:1.5px;
+}
+.glow-card.glow-active::after{opacity:1;}
+.glow-card.glow-always::after{opacity:1;animation:glowRotate 4s linear infinite;}
+@keyframes glowRotate{
+  from{--glow-a:0;}to{--glow-a:360;}
+}
+/* popular card siempre glows */
+.pc-popular::after{opacity:.55;animation:glowRotate 5s linear infinite;}
+.pc-popular.glow-active::after{opacity:1;}
+
 /* FADE UP */
 .js .fade-up{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
 .js .fade-up.visible{opacity:1;transform:translateY(0);}
@@ -344,12 +431,12 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
   <div class="section-tag">⚡ Todo lo que hace Zine Club</div>
   <h2 class="section-title">Más que recomendaciones.<br/><em>Tu vida cinéfila.</em></h2>
   <div class="features-grid">
-    <div class="feat-card"><span class="feat-icon">🎭</span><h3 class="feat-title">¿Qué mood tienes hoy?</h3><p class="feat-body">6 preguntas. Tu mood, tu formato, con quién estás y qué plataformas tienes. Zine Club te da lo que necesitas ver — no una lista, una película.</p></div>
-    <div class="feat-card"><span class="feat-icon">🍿</span><h3 class="feat-title">Modo Maratón</h3><p class="feat-body">¿Tienes todo el día? Actívalo y Zine Club te construye una sesión completa y curada. Tú solo tienes que sentarte.</p></div>
-    <div class="feat-card"><span class="feat-icon">📺</span><h3 class="feat-title">Película, Miniserie, Serie — sin líos</h3><p class="feat-body">Zine Club detecta automáticamente si es una película de 90 min, una miniserie de 6 episodios o una serie de 8 temporadas. Tú decides cuánto tiempo tienes.</p></div>
-    <div class="feat-card"><span class="feat-icon">🔔</span><h3 class="feat-title">Solo los estrenos que te importan</h3><p class="feat-body">Te avisamos cuando llega algo que encaja con tu mood. Sin ruido. Solo lo que necesitas ver.</p></div>
-    <div class="feat-card"><span class="feat-icon">🔍</span><h3 class="feat-title">Directo a tu plataforma</h3><p class="feat-body">Encuentra lo que quieres ver y accede directo a Netflix, HBO Max, Disney+, Prime, Filmin, Apple TV+ o Movistar+ con un toque.</p></div>
-    <div class="feat-card"><span class="feat-icon">📝</span><h3 class="feat-title">Tu historial cinéfilo</h3><p class="feat-body">Marca lo que has visto, guarda lo que quieres ver, escribe tu reseña. Todo en un sitio, siempre contigo.</p></div>
+    <div class="feat-card glow-card"><span class="feat-icon">🎭</span><h3 class="feat-title">¿Qué mood tienes hoy?</h3><p class="feat-body">6 preguntas. Tu mood, tu formato, con quién estás y qué plataformas tienes. Zine Club te da lo que necesitas ver — no una lista, una película.</p></div>
+    <div class="feat-card glow-card"><span class="feat-icon">🍿</span><h3 class="feat-title">Modo Maratón</h3><p class="feat-body">¿Tienes todo el día? Actívalo y Zine Club te construye una sesión completa y curada. Tú solo tienes que sentarte.</p></div>
+    <div class="feat-card glow-card"><span class="feat-icon">📺</span><h3 class="feat-title">Película, Miniserie, Serie — sin líos</h3><p class="feat-body">Zine Club detecta automáticamente si es una película de 90 min, una miniserie de 6 episodios o una serie de 8 temporadas. Tú decides cuánto tiempo tienes.</p></div>
+    <div class="feat-card glow-card"><span class="feat-icon">🔔</span><h3 class="feat-title">Solo los estrenos que te importan</h3><p class="feat-body">Te avisamos cuando llega algo que encaja con tu mood. Sin ruido. Solo lo que necesitas ver.</p></div>
+    <div class="feat-card glow-card"><span class="feat-icon">🔍</span><h3 class="feat-title">Directo a tu plataforma</h3><p class="feat-body">Encuentra lo que quieres ver y accede directo a Netflix, HBO Max, Disney+, Prime, Filmin, Apple TV+ o Movistar+ con un toque.</p></div>
+    <div class="feat-card glow-card"><span class="feat-icon">📝</span><h3 class="feat-title">Tu historial cinéfilo</h3><p class="feat-body">Marca lo que has visto, guarda lo que quieres ver, escribe tu reseña. Todo en un sitio, siempre contigo.</p></div>
   </div>
 </section>
 
@@ -360,13 +447,13 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
     <h2 class="section-title">Cada película que ves <em>cuenta.</em></h2>
     <p class="section-body">Suma puntos por cada título visto y reseñado. Sube de rango. Compite con tus amigos. ¿Llegas a Leyenda?</p>
     <div class="badges-row">
-      <div class="badge-card"><div class="badge-icon">👁</div><div class="badge-name">Espectador</div><div class="badge-pts">desde <span>0 pts</span></div></div>
-      <div class="badge-card"><div class="badge-icon">🎬</div><div class="badge-name">Aficionado</div><div class="badge-pts">desde <span>100 pts</span></div></div>
-      <div class="badge-card"><div class="badge-icon">🎞</div><div class="badge-name">Cinéfilo</div><div class="badge-pts">desde <span>300 pts</span></div></div>
-      <div class="badge-card"><div class="badge-icon">🎭</div><div class="badge-name">Auteur</div><div class="badge-pts">desde <span>600 pts</span></div></div>
-      <div class="badge-card"><div class="badge-icon">✍️</div><div class="badge-name">Crítico</div><div class="badge-pts">desde <span>1.000 pts</span></div></div>
-      <div class="badge-card"><div class="badge-icon">🏆</div><div class="badge-name">Maestro</div><div class="badge-pts">desde <span>2.000 pts</span></div></div>
-      <div class="badge-card legend"><div class="badge-icon">⭐</div><div class="badge-name">Leyenda</div><div class="badge-pts">desde <span>5.000 pts</span></div></div>
+      <div class="badge-card glow-card"><div class="badge-icon">👁</div><div class="badge-name">Espectador</div><div class="badge-pts">desde <span>0 pts</span></div></div>
+      <div class="badge-card glow-card"><div class="badge-icon">🎬</div><div class="badge-name">Aficionado</div><div class="badge-pts">desde <span>100 pts</span></div></div>
+      <div class="badge-card glow-card"><div class="badge-icon">🎞</div><div class="badge-name">Cinéfilo</div><div class="badge-pts">desde <span>300 pts</span></div></div>
+      <div class="badge-card glow-card"><div class="badge-icon">🎭</div><div class="badge-name">Auteur</div><div class="badge-pts">desde <span>600 pts</span></div></div>
+      <div class="badge-card glow-card"><div class="badge-icon">✍️</div><div class="badge-name">Crítico</div><div class="badge-pts">desde <span>1.000 pts</span></div></div>
+      <div class="badge-card glow-card"><div class="badge-icon">🏆</div><div class="badge-name">Maestro</div><div class="badge-pts">desde <span>2.000 pts</span></div></div>
+      <div class="badge-card legend glow-card glow-always"><div class="badge-icon">⭐</div><div class="badge-name">Leyenda</div><div class="badge-pts">desde <span>5.000 pts</span></div></div>
     </div>
   </div>
 </div>
@@ -417,6 +504,86 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
     <div class="waitlist-ok" id="waitlistOk">✓ Apuntado. Te avisamos pronto.</div>
     <div class="waitlist-err" id="waitlistErr">Algo ha fallado. Inténtalo de nuevo.</div>
     <p class="waitlist-micro">Sin tarjeta. Sin trucos. Solo cine.</p>
+  </div>
+</div>
+
+
+<!-- PRICING -->
+<div class="pricing-section" id="precios">
+  <div class="pricing-grain"></div>
+  <div class="pricing-glow"></div>
+  <div class="pricing-inner">
+    <div class="section-tag">✦ Sin sorpresas</div>
+    <h2 class="section-title">Un precio justo<br/><em>por lo que de verdad usas.</em></h2>
+    <p class="section-body" style="margin-bottom:40px;max-width:460px;">Sin algoritmos de suscripción. Sin renovaciones ocultas. Solo cine — cuando quieras y como quieras.</p>
+
+    <div class="pricing-toggle">
+      <button class="ptoggle-btn active" id="pToggleM" onclick="setPricing('monthly')">Mensual</button>
+      <button class="ptoggle-btn" id="pToggleY" onclick="setPricing('yearly')">Anual <span class="ptoggle-badge">−17%</span></button>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Gratis -->
+      <div class="pc glow-card">
+        <div class="pc-name">Gratis</div>
+        <div class="pc-price-block">
+          <div class="pc-price"><span class="pc-euro">€</span>0</div>
+        </div>
+        <div class="pc-period">para siempre · sin tarjeta</div>
+        <div class="pc-desc">Para los que quieren descubrir si les gusta antes de comprometerse. Sin trucos.</div>
+        <a href="https://paulaconsproyectos.github.io/zineclub/" class="pc-cta pc-cta-ghost">Empezar gratis</a>
+        <ul class="pc-features">
+          <li>3 tests de mood al mes</li>
+          <li>Recomendaciones básicas</li>
+          <li>Lista de pendientes (10 títulos)</li>
+          <li>Acceso a la comunidad</li>
+          <li>Historial de los últimos 3 tests</li>
+        </ul>
+      </div>
+
+      <!-- Cinéfilo — popular -->
+      <div class="pc pc-popular glow-card">
+        <div class="pc-badge">Más popular</div>
+        <div class="pc-name">Cinéfilo</div>
+        <div class="pc-price-block">
+          <div class="pc-price" id="pcPrice"><span class="pc-euro">€</span><span id="pcAmount">2,99</span></div>
+        </div>
+        <div class="pc-period" id="pcPeriod">/mes · facturado mensualmente</div>
+        <div class="pc-desc">Tests ilimitados. Modo Maratón. El cine que mereces, sin límites ni excusas.</div>
+        <a href="https://paulaconsproyectos.github.io/zineclub/" class="pc-cta pc-cta-gold" id="pcCta">Empezar ahora</a>
+        <ul class="pc-features">
+          <li class="pc-feat-head">Todo lo de Gratis, más:</li>
+          <li>Tests de mood ilimitados</li>
+          <li>Modo Maratón completo</li>
+          <li>Listas sin límite</li>
+          <li>Todas las plataformas de streaming</li>
+          <li>Historial completo</li>
+          <li>Reseñas y puntuaciones</li>
+          <li>Ranking cinéfilo</li>
+        </ul>
+      </div>
+
+      <!-- Leyenda -->
+      <div class="pc glow-card" id="pcYearCard">
+        <div class="pc-name">Leyenda</div>
+        <div class="pc-price-block">
+          <div class="pc-price"><span class="pc-euro">€</span>29,99</div>
+        </div>
+        <div class="pc-period">/año · <span style="color:var(--acc2);">2,49€/mes</span></div>
+        <div class="pc-desc">Para los cinéfilos de verdad. El pack completo al precio más bajo, para siempre.</div>
+        <a href="https://paulaconsproyectos.github.io/zineclub/" class="pc-cta pc-cta-ghost">Hacerse Leyenda</a>
+        <ul class="pc-features">
+          <li class="pc-feat-head">Todo lo de Cinéfilo, más:</li>
+          <li>Badge exclusivo ⭐ Leyenda</li>
+          <li>Acceso anticipado a novedades</li>
+          <li>Soporte prioritario</li>
+          <li>Ahorra 6€ al año respecto al mensual</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="pricing-note">¿Dudas? Escríbenos a <a href="mailto:hola@zineclub.io">hola@zineclub.io</a> — respondemos rápido.</p>
   </div>
 </div>
 
@@ -582,6 +749,52 @@ document.querySelectorAll('.quiz-opt').forEach(opt=>{
     this.classList.add('active');
   });
 });
+
+
+// Pricing toggle
+function setPricing(period){
+  const isYearly = period === 'yearly';
+  document.getElementById('pToggleM').classList.toggle('active', !isYearly);
+  document.getElementById('pToggleY').classList.toggle('active', isYearly);
+  const amount = document.getElementById('pcAmount');
+  const per = document.getElementById('pcPeriod');
+  const cta = document.getElementById('pcCta');
+  if(amount){
+    amount.style.transition = 'opacity .18s';
+    amount.style.opacity = '0';
+    setTimeout(()=>{
+      amount.textContent = isYearly ? '29,99' : '2,99';
+      per.innerHTML = isYearly ? '/año · <span style="color:var(--acc2);">2,49€/mes</span>' : '/mes · facturado mensualmente';
+      cta.textContent = isYearly ? 'Hacerse Leyenda' : 'Empezar ahora';
+      amount.style.opacity = '1';
+    }, 180);
+  }
+}
+
+
+// Glowing effect — mouse tracking
+(function(){
+  function initGlow(){
+    document.querySelectorAll('.glow-card:not(.glow-always)').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = this.getBoundingClientRect();
+        var cx = r.left + r.width * .5;
+        var cy = r.top + r.height * .5;
+        var angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI) + 90;
+        this.style.setProperty('--glow-a', angle.toFixed(1));
+        this.classList.add('glow-active');
+      });
+      card.addEventListener('mouseleave', function(){
+        this.classList.remove('glow-active');
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initGlow);
+  } else {
+    initGlow();
+  }
+})();
 
 buildHeroPool();
 loadPosters();
