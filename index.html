@@ -343,9 +343,153 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
   .feat-card{padding:24px 18px;}
   .review-card{padding:18px;}
 }
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--acc), var(--acc2));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(201,169,110,0.5);
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--acc);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(201,169,110,0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease, width 0.22s ease, height 0.22s ease, opacity 0.22s ease, border-color 0.2s ease;
+}
+body { cursor: none; }
+a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc { cursor: none; }
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc { cursor: auto; }
+  #cursor, #cursor-ring { display: none; }
+}
+
+/* ── TILT CARDS ── */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.12s ease, box-shadow 0.2s ease;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,169,110,0.15);
+}
+
+/* ── STAGGER REVEAL ── */
+.js .stagger-child {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.js .stagger-child.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── STAT COUNTER ── */
+.stat-num[data-target] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── SECTION SIDE NUMBER ── */
+.section-marker {
+  position: absolute;
+  left: -48px;
+  top: 0;
+  font-family: 'DM Serif Display', serif;
+  font-size: 72px;
+  color: rgba(201,169,110,0.06);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── PARALLAX WRAPPER ── */
+.parallax-el {
+  will-change: transform;
+}
+
+/* ── MAGNETIC BUTTON ── */
+.btn-primary, .btn-secondary, .nav-cta, .waitlist-btn {
+  transition: transform 0.15s ease, background 0.18s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 32px rgba(201,169,110,0.35);
+}
+
+/* ── SECTION REVEAL (enhanced) ── */
+.js .fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.js .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── HERO PARALLAX HINT ── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.45;
+  animation: scrollHint 2.4s ease-in-out infinite;
+}
+.hero-scroll-hint span {
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  font-weight: 600;
+}
+.hero-scroll-hint-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--acc), transparent);
+}
+@keyframes scrollHint {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50%       { opacity: 0.7; transform: translateX(-50%) translateY(6px); }
+}
+@media (max-width:860px) {
+  .section-marker { display: none; }
+}
+
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
 <!-- NAV -->
 <nav>
@@ -422,8 +566,8 @@ footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 48px;disp
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num">6<span>✦</span></div><div class="stat-label">Preguntas · 30 seg</div></div>
   <div class="stat-item"><div class="stat-num">7<span>+</span></div><div class="stat-label">Plataformas</div></div>
-  <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Recomendación perfecta</div></div>
-  <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Combinaciones posibles</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="1">1</div><div class="stat-label">Recomendación perfecta</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="∞">∞</div><div class="stat-label">Combinaciones posibles</div></div>
 </div>
 
 
@@ -478,12 +622,12 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 <section class="section fade-up">
   <h2 class="section-title">Películas, series, maratones.<br/><em>Sin perder el tiempo eligiendo.</em></h2>
   <div class="features-grid">
-    <div class="feat-card glow-card"><span class="feat-icon">🎭</span><h3 class="feat-title">¿Qué mood tienes hoy?</h3><p class="feat-body">6 preguntas. Tu mood, tu formato, con quién estás y qué plataformas tienes. Zine Club te da lo que necesitas ver — no una lista, una película o una serie.</p></div>
-    <div class="feat-card glow-card"><span class="feat-icon">🍿</span><h3 class="feat-title">Modo Maratón</h3><p class="feat-body">¿Tienes todo el día? Actívalo y Zine Club te construye una sesión completa y curada. Tú solo tienes que sentarte.</p></div>
-    <div class="feat-card glow-card"><span class="feat-icon">📺</span><h3 class="feat-title">Película, Miniserie, Serie — sin líos</h3><p class="feat-body">Zine Club detecta automáticamente si es una película de 90 min, una miniserie de 6 episodios o una serie de 8 temporadas. Tú decides cuánto tiempo tienes.</p></div>
-    <div class="feat-card glow-card"><span class="feat-icon">🔔</span><h3 class="feat-title">Solo los estrenos que te importan</h3><p class="feat-body">Te avisamos cuando llega algo que encaja con tu mood. Sin ruido. Solo lo que necesitas ver.</p></div>
-    <div class="feat-card glow-card"><span class="feat-icon">🔍</span><h3 class="feat-title">Directo a tu plataforma</h3><p class="feat-body">Encuentra lo que quieres ver y accede directo a Netflix, HBO Max, Disney+, Prime, Filmin, Apple TV+ o Movistar+ con un toque.</p></div>
-    <div class="feat-card glow-card"><span class="feat-icon">📝</span><h3 class="feat-title">Tu historial cinéfilo</h3><p class="feat-body">Marca lo que has visto, guarda lo que quieres ver, escribe tu reseña. Todo en un sitio, siempre contigo.</p></div>
+    <div class="feat-card glow-card tilt-card stagger-child"><span class="feat-icon">🎭</span><h3 class="feat-title">¿Qué mood tienes hoy?</h3><p class="feat-body">6 preguntas. Tu mood, tu formato, con quién estás y qué plataformas tienes. Zine Club te da lo que necesitas ver — no una lista, una película o una serie.</p></div>
+    <div class="feat-card glow-card tilt-card stagger-child"><span class="feat-icon">🍿</span><h3 class="feat-title">Modo Maratón</h3><p class="feat-body">¿Tienes todo el día? Actívalo y Zine Club te construye una sesión completa y curada. Tú solo tienes que sentarte.</p></div>
+    <div class="feat-card glow-card tilt-card stagger-child"><span class="feat-icon">📺</span><h3 class="feat-title">Película, Miniserie, Serie — sin líos</h3><p class="feat-body">Zine Club detecta automáticamente si es una película de 90 min, una miniserie de 6 episodios o una serie de 8 temporadas. Tú decides cuánto tiempo tienes.</p></div>
+    <div class="feat-card glow-card tilt-card stagger-child"><span class="feat-icon">🔔</span><h3 class="feat-title">Solo los estrenos que te importan</h3><p class="feat-body">Te avisamos cuando llega algo que encaja con tu mood. Sin ruido. Solo lo que necesitas ver.</p></div>
+    <div class="feat-card glow-card tilt-card stagger-child"><span class="feat-icon">🔍</span><h3 class="feat-title">Directo a tu plataforma</h3><p class="feat-body">Encuentra lo que quieres ver y accede directo a Netflix, HBO Max, Disney+, Prime, Filmin, Apple TV+ o Movistar+ con un toque.</p></div>
+    <div class="feat-card glow-card tilt-card stagger-child"><span class="feat-icon">📝</span><h3 class="feat-title">Tu historial cinéfilo</h3><p class="feat-body">Marca lo que has visto, guarda lo que quieres ver, escribe tu reseña. Todo en un sitio, siempre contigo.</p></div>
   </div>
 </section>
 
@@ -493,13 +637,13 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
     <h2 class="section-title">Cada película que ves <em>cuenta.</em></h2>
     <p class="section-body">Suma puntos por cada título visto y reseñado. Sube de rango. Compite con tus amigos. ¿Llegas a Leyenda?</p>
     <div class="badges-row">
-      <div class="badge-card glow-card"><div class="badge-icon">👁</div><div class="badge-name">Espectador</div><div class="badge-pts">desde <span>0 pts</span></div></div>
-      <div class="badge-card glow-card"><div class="badge-icon">🎬</div><div class="badge-name">Aficionado</div><div class="badge-pts">desde <span>100 pts</span></div></div>
-      <div class="badge-card glow-card"><div class="badge-icon">🎞</div><div class="badge-name">Cinéfilo</div><div class="badge-pts">desde <span>300 pts</span></div></div>
-      <div class="badge-card glow-card"><div class="badge-icon">🎭</div><div class="badge-name">Auteur</div><div class="badge-pts">desde <span>600 pts</span></div></div>
-      <div class="badge-card glow-card"><div class="badge-icon">✍️</div><div class="badge-name">Crítico</div><div class="badge-pts">desde <span>1.000 pts</span></div></div>
-      <div class="badge-card glow-card"><div class="badge-icon">🏆</div><div class="badge-name">Maestro</div><div class="badge-pts">desde <span>2.000 pts</span></div></div>
-      <div class="badge-card legend glow-card glow-always"><div class="badge-icon">⭐</div><div class="badge-name">Leyenda</div><div class="badge-pts">desde <span>5.000 pts</span></div></div>
+      <div class="badge-card tilt-card glow-card"><div class="badge-icon">👁</div><div class="badge-name">Espectador</div><div class="badge-pts">desde <span>0 pts</span></div></div>
+      <div class="badge-card tilt-card glow-card"><div class="badge-icon">🎬</div><div class="badge-name">Aficionado</div><div class="badge-pts">desde <span>100 pts</span></div></div>
+      <div class="badge-card tilt-card glow-card"><div class="badge-icon">🎞</div><div class="badge-name">Cinéfilo</div><div class="badge-pts">desde <span>300 pts</span></div></div>
+      <div class="badge-card tilt-card glow-card"><div class="badge-icon">🎭</div><div class="badge-name">Auteur</div><div class="badge-pts">desde <span>600 pts</span></div></div>
+      <div class="badge-card tilt-card glow-card"><div class="badge-icon">✍️</div><div class="badge-name">Crítico</div><div class="badge-pts">desde <span>1.000 pts</span></div></div>
+      <div class="badge-card tilt-card glow-card"><div class="badge-icon">🏆</div><div class="badge-name">Maestro</div><div class="badge-pts">desde <span>2.000 pts</span></div></div>
+      <div class="badge-card tilt-card legend glow-card glow-always"><div class="badge-icon">⭐</div><div class="badge-name">Leyenda</div><div class="badge-pts">desde <span>5.000 pts</span></div></div>
     </div>
   </div>
 </div>
@@ -529,9 +673,9 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
 <section class="section fade-up">
   <h2 class="section-title">Opiniones reales.<br/><em>Sin filtros.</em></h2>
   <div class="reviews-grid">
-    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-film">Dune: Parte Dos</div><p class="review-text">Villeneuve lo vuelve a hacer. La escala visual es inalcanzable.</p><div class="review-user"><div class="review-av">MR</div><div class="review-name">@marcosr · Marcos Ruiz</div></div></div>
-    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-film">Pobres Criaturas</div><p class="review-text">Yorgos en estado puro. Perturbadora, liberadora, completamente única.</p><div class="review-user"><div class="review-av">LT</div><div class="review-name">@laiat · Laia Torres</div></div></div>
-    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-film">La Zona de Interés</div><p class="review-text">El horror en lo cotidiano. La película más importante del año.</p><div class="review-user"><div class="review-av">AB</div><div class="review-name">@andresb · Andrés Bernal</div></div></div>
+    <div class="review-card tilt-card stagger-child"><div class="review-stars">★★★★★</div><div class="review-film">Dune: Parte Dos</div><p class="review-text">Villeneuve lo vuelve a hacer. La escala visual es inalcanzable.</p><div class="review-user"><div class="review-av">MR</div><div class="review-name">@marcosr · Marcos Ruiz</div></div></div>
+    <div class="review-card tilt-card stagger-child"><div class="review-stars">★★★★★</div><div class="review-film">Pobres Criaturas</div><p class="review-text">Yorgos en estado puro. Perturbadora, liberadora, completamente única.</p><div class="review-user"><div class="review-av">LT</div><div class="review-name">@laiat · Laia Torres</div></div></div>
+    <div class="review-card tilt-card stagger-child"><div class="review-stars">★★★★★</div><div class="review-film">La Zona de Interés</div><p class="review-text">El horror en lo cotidiano. La película más importante del año.</p><div class="review-user"><div class="review-av">AB</div><div class="review-name">@andresb · Andrés Bernal</div></div></div>
   </div>
 </section>
 
@@ -561,7 +705,7 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
     <div class="pricing-grid">
 
       <!-- Gratis -->
-      <div class="pc glow-card">
+      <div class="pc glow-card tilt-card stagger-child">
         <div class="pc-name">Gratis</div>
         <div class="pc-price-block">
           <div class="pc-price"><span class="pc-euro">€</span>0</div>
@@ -601,7 +745,7 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
       </div>
 
       <!-- Leyenda -->
-      <div class="pc glow-card">
+      <div class="pc glow-card tilt-card stagger-child">
         <div class="pc-name">Leyenda</div>
         <div class="pc-price-block">
           <div class="pc-price"><span class="pc-euro">€</span>29,99</div>
@@ -653,149 +797,152 @@ Zine Club te hace 6 preguntas — tu mood, el tiempo que tienes, con quién est�
   <div class="footer-txt">&copy; 2026 Zine Club</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.documentElement.classList.add("js");
-const SUPA_URL = "https://scqoqwmkptyxwpiwhkyk.supabase.co";
-const SUPA_KEY = "sb_publishable_GPGtFCLX8xNSIvyCznVDrg_K3xhtb4N";
-const TMDB_KEY = "10f1051018046e4262a70010b517415c";
-const IMG_W    = "https://image.tmdb.org/t/p/w300";
-const IMG_ORIG = "https://image.tmdb.org/t/p/original";
-
-async function submitWaitlist(){
-  const emailEl = document.getElementById('waitlistEmail');
-  const btn     = document.getElementById('waitlistBtn');
-  const ok      = document.getElementById('waitlistOk');
-  const err     = document.getElementById('waitlistErr');
-  const email   = emailEl.value.trim();
-  if(!email || !email.includes('@')){ err.textContent='Introduce un email válido.'; err.classList.add('show'); return; }
-  btn.disabled = true; btn.textContent = '…';
-  err.classList.remove('show'); ok.classList.remove('show');
-  try {
-    const res = await fetch(SUPA_URL+'/rest/v1/waitlist', {
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
-      body: JSON.stringify({email, created_at: new Date().toISOString()})
-    });
-    if(res.ok || res.status===409){ ok.classList.add('show'); emailEl.value=''; }
-    else { throw new Error(res.status); }
-  } catch(e) { err.textContent='Algo ha fallado. Inténtalo de nuevo.'; err.classList.add('show'); }
-  btn.disabled=false; btn.textContent='Quiero acceso';
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+// ── SCROLL PROGRESS BAR ──
+const progressBar = document.getElementById('scroll-progress');
+function updateProgress() {
+  const h = document.documentElement;
+  const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+  if (progressBar) progressBar.style.width = pct + '%';
 }
+window.addEventListener('scroll', updateProgress, { passive: true });
 
-document.getElementById('waitlistEmail').addEventListener('keydown', function(e){
-  if(e.key==='Enter') submitWaitlist();
+// ── CUSTOM CURSOR ──
+const cur = document.getElementById('cursor');
+const curR = document.getElementById('cursor-ring');
+let mx = -100, my = -100, rx = -100, ry = -100;
+document.addEventListener('mousemove', (e) => {
+  mx = e.clientX; my = e.clientY;
+  if (cur) { cur.style.left = mx + 'px'; cur.style.top = my + 'px'; }
 });
-
-const HERO_FILMS = [
-  {backdrop:'img/goodfellas.jpg',   title:'Uno de los Nuestros'},
-  {backdrop:'img/inception.jpg',    title:'El Origen'},
-  {backdrop:'img/interstellar.jpg', title:'Interstellar'},
-  {backdrop:'img/darkknight.jpg',   title:'El Caballero Oscuro'},
-  {backdrop:'img/parasite.jpg',     title:'Parásitos'},
-  {backdrop:'img/oppenheimer.jpg',  title:'Oppenheimer'},
-  {backdrop:'img/bladerunner.jpg',  title:'Blade Runner 2049'},
-  {backdrop:'img/dune.jpg',         title:'Dune'},
-  {backdrop:'img/godfather.jpg',    title:'El Padrino'},
-  {backdrop:'img/pulpfiction.jpg',  title:'Pulp Fiction'},
-  {backdrop:'img/whiplash.jpg',     title:'Whiplash'},
-  {backdrop:'img/schindler.jpg',    title:'La Lista de Schindler'},
-  {backdrop:'img/cityofgod.jpg',    title:'Ciudad de Dios'},
-  {backdrop:'img/joker.jpg',        title:'Joker'},
-  {backdrop:'img/1917.jpg',         title:'1917'},
-  {backdrop:'img/revenant.jpg',     title:'El Renacido'},
-];
-
-const POSTER_FILMS = [
-  {poster:'img/p_godfather.jpg',   title:'El Padrino'},
-  {poster:'img/p_pulpfiction.jpg', title:'Pulp Fiction'},
-  {poster:'img/p_whiplash.jpg',    title:'Whiplash'},
-  {poster:'img/p_darkknight.jpg',  title:'El Caballero Oscuro'},
-  {poster:'img/p_cinema.jpg',      title:'Cinema Paradiso'},
-  {poster:'img/p_cityofgod.jpg',   title:'Ciudad de Dios'},
-  {poster:'img/p_godfather2.jpg',  title:'El Padrino II'},
-  {poster:'img/p_inception.jpg',   title:'El Origen'},
-  {poster:'img/p_interstellar.jpg',title:'Interstellar'},
-  {poster:'img/p_parasite.jpg',    title:'Parásitos'},
-  {poster:'img/p_joker.jpg',       title:'Joker'},
-  {poster:'img/p_oppenheimer.jpg', title:'Oppenheimer'},
-  {poster:'img/p_1917.jpg',        title:'1917'},
-  {poster:'img/p_bladerunner.jpg', title:'Blade Runner 2049'},
-];
-
-function shuffle(a){ return a.sort(()=>Math.random()-.5); }
-
-let heroPool=[], heroIdx=0;
-
-function showHeroFrame(idx){
-  var item=heroPool[idx]; if(!item) return;
-  var bg=document.getElementById('heroBg');
-  var titleEl=document.getElementById('heroFilmTitle');
-  bg.style.opacity='0';
-  setTimeout(function(){
-    bg.style.backgroundImage='url("'+item.backdrop+'")';
-    bg.style.opacity='1';
-    if(titleEl) titleEl.textContent=item.title;
-  },400);
+function lerpCursor() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  if (curR) { curR.style.left = rx + 'px'; curR.style.top = ry + 'px'; }
+  requestAnimationFrame(lerpCursor);
 }
-
-function buildHeroPool(){
-  heroPool=shuffle([...HERO_FILMS]);
-  showHeroFrame(0);
-  setInterval(()=>{ heroIdx=(heroIdx+1)%heroPool.length; showHeroFrame(heroIdx); },7000);
-}
-
-function loadPosters(){ /* static HTML */ }
-
-function renderPosters(track,posters){
-  if(track.children.length) return;
-  [...posters,...posters].forEach(p=>{
-    const img=document.createElement('img');
-    img.src=p.poster; img.alt=p.title; img.title=p.title;
-    img.className='film-poster'; img.loading='lazy';
-    track.appendChild(img);
+lerpCursor();
+// Cursor states
+document.querySelectorAll('a, button, .quiz-opt, .film-poster, .badge-card, .feat-card, .review-card, .pc').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    if (cur) { cur.style.width = '12px'; cur.style.height = '12px'; cur.style.background = 'var(--acc2)'; }
+    if (curR) { curR.style.width = '48px'; curR.style.height = '48px'; curR.style.borderColor = 'rgba(201,169,110,0.7)'; }
   });
-}
-
-const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }); },{threshold:.1});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-
-document.querySelectorAll('.quiz-opt').forEach(opt=>{
-  opt.addEventListener('click',function(){
-    document.querySelectorAll('.quiz-opt').forEach(opt=>{
-  opt.addEventListener('click',function(){
-    document.querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('active'));
-    this.classList.add('active');
+  el.addEventListener('mouseleave', () => {
+    if (cur) { cur.style.width = '8px'; cur.style.height = '8px'; cur.style.background = 'var(--acc)'; }
+    if (curR) { curR.style.width = '32px'; curR.style.height = '32px'; curR.style.borderColor = 'rgba(201,169,110,0.45)'; }
   });
 });
 
+// ── CARD 3D TILT ──
+document.querySelectorAll('.tilt-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    const maxTilt = 6;
+    card.style.transform = `perspective(800px) rotateY(${dx * maxTilt}deg) rotateX(${-dy * maxTilt}deg) translateZ(4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateZ(0)';
+  });
+});
 
+// ── STAGGER REVEAL ──
+const staggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const parent = entry.target;
+      const children = parent.querySelectorAll('.stagger-child');
+      children.forEach((child, i) => {
+        setTimeout(() => child.classList.add('visible'), i * 80);
+      });
+      staggerObserver.unobserve(parent);
+    }
+  });
+}, { threshold: 0.12 });
+
+// Observe grids/rows that contain stagger-child
+document.querySelectorAll('.features-grid, .reviews-grid, .badges-row, .pricing-grid').forEach(g => {
+  staggerObserver.observe(g);
+});
+
+// ── STAT COUNTER ANIMATION ──
+function parseNum(str) {
+  // e.g. "12K+", "4.8★", "98%", "2,400+"
+  str = str.replace(/[★,\s]/g, '');
+  const suffix = str.replace(/[\d.]/g, '');
+  const num = parseFloat(str);
+  return { num, suffix };
+}
+function formatNum(num, suffix, decimals) {
+  let n = decimals > 0 ? num.toFixed(decimals) : Math.round(num).toString();
+  if (suffix.includes('K')) n = (num / 1000).toFixed(1) + 'K';
+  return n + suffix.replace('K', '');
 }
 
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const raw = el.dataset.target;
+    if (!raw) return;
+    statObserver.unobserve(el);
+    const { num, suffix } = parseNum(raw);
+    const start = Date.now();
+    const dur = 1200;
+    const hasK = raw.includes('K');
+    const decimals = raw.includes('.') ? 1 : 0;
+    function tick() {
+      const t = Math.min((Date.now() - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      const cur = num * ease;
+      if (hasK) {
+        el.innerHTML = el.innerHTML.replace(/[\d.,KM]+/, (cur/1000).toFixed(1) + 'K');
+      } else if (decimals > 0) {
+        el.innerHTML = el.innerHTML.replace(/[\d.]+/, cur.toFixed(1));
+      } else {
+        el.innerHTML = el.innerHTML.replace(/\d[\d,]*/, Math.round(cur).toLocaleString('es'));
+      }
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    tick();
+  });
+}, { threshold: 0.5 });
 
-// Glowing effect — mouse tracking
-(function(){
-  function initGlow(){
-    document.querySelectorAll('.glow-card:not(.glow-always)').forEach(function(card){
-      card.addEventListener('mousemove', function(e){
-        var r = this.getBoundingClientRect();
-        var cx = r.left + r.width * .5;
-        var cy = r.top + r.height * .5;
-        var angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI) + 90;
-        this.style.setProperty('--glow-a', angle.toFixed(1));
-        this.classList.add('glow-active');
-      });
-      card.addEventListener('mouseleave', function(){
-        this.classList.remove('glow-active');
-      });
-    });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+
+// ── HERO PARALLAX (scroll) ──
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  if (!heroBg) return;
+  const y = window.scrollY;
+  if (y < window.innerHeight) {
+    heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px)';
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initGlow);
-  } else {
-    initGlow();
-  }
-})();
+}, { passive: true });
 
-buildHeroPool();
-loadPosters();
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.btn-primary, .nav-cta, .waitlist-btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.25;
+    const dy = (e.clientY - cy) * 0.25;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0, 0)';
+  });
+});
 
+// ── HIDE SCROLL HINT ON SCROLL ──
+const scrollHint = document.querySelector('.hero-scroll-hint');
+window.addEventListener('scroll', () => {
+  if (scrollHint) scrollHint.style.opacity = Math.max(0, 0.45 - window.scrollY / 200);
+}, { passive: true });
+
+</script>
